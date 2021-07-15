@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Union, Optional, Iterable, Callable, \
   Any
 from abc import ABC, abstractstaticmethod
-from functools import partial, wraps
+from functools import partial
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from asyncio import gather, run, Task
@@ -277,10 +277,21 @@ def get_paths(
   return AppPaths(*paths)
 
 
-@wraps(get_paths)
 async def get_async_paths(
-  *args,
-  **kwargs
+  appname: Optional[str] = None,
+  appauthor: Optional[str] = None,
+  version: Optional[str] = None,
+  roaming: bool = False,
+  multipath: bool = False,
 ):
-  func = partial(get_paths, is_async=True, **kwargs)
+  func = partial(
+    get_paths,
+    appname,
+    appauthor,
+    version,
+    roaming,
+    multipath
+    is_async=True,
+  )
+
   return await to_thread(func)
