@@ -1,8 +1,10 @@
 # `app_paths`
-`app_paths` builds upon `appdirs`. Instead of strings, `app_paths` gives users `pathlib` or `aiopath` objects and handles path creation efficiently. It also adds async support.
+`app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/). 
+
+Instead of strings, `app_paths` gives users [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects and handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
 ## Use case
-Let's take a look at `appdirs`:
+Let's take a look at [`appdirs`](https://pypi.org/project/appdirs/):
 ```python
 from pathlib import Path
 from appdirs import AppDirs
@@ -26,20 +28,20 @@ user_data_path = Path(user_data)
 assert not user_data_path.exists()
 ```
 
-However, it's up to app developers to handle creating paths on users' file systems. It's also up to developers to decide how they want to manipulate those paths, using abstractions like `os.path`, `pathlib` or `aiopath`. Developers also have to think about how to efficiently perform path creation.
+However, it's up to app developers to handle creating paths on users' file systems. It's also up to developers to decide how they want to manipulate those paths, using abstractions like [`os.path`](https://docs.python.org/3/library/os.path.html), [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath). Developers also have to think about how to efficiently perform path creation.
 
 `app_paths` takes care of all of that for you.
 
-`app_paths` automatically gives you `pathlib.Path` handles for your paths in synchronous apps, and `aiopath.AsyncPath` handles for async apps. 
+`app_paths` automatically gives you [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html) handles for your paths in synchronous apps, and [`aiopath.AsyncPath`](https://github.com/alexdelorenzo/aiopath) handles for async apps. 
 
 ```python3
 from app_paths import AppPaths, AsyncAppPaths
 
 
-dirs = AppPaths.get_paths('app', 'My Name', '0.1.0')
+paths = AppPaths.get_paths('app', 'My Name', '0.1.0')
 
 # app_paths can returns paths
-user_data: Path = dirs.user_data_path
+user_data: Path = paths.user_data_path
 assert isinstance(user_data, Path)
 ```
 
@@ -50,18 +52,18 @@ assert isinstance(user_data, Path)
 assert not user_data.exists()
 
 # but it can also dynamically create paths on the fly
-user_data: Path = dirs.user_data
+user_data: Path = paths.user_data
 assert user_data.exists()
 ```
 
 It can do batch creation of app paths, and it will use efficient concurrent I/O in both synchronous and async Python programs.
 
 ```python3
-dirs.create_user()
-dirs.create_site()
+paths.create_user()
+paths.create_site()
 
 # to run the following you must have write access to all paths
-dirs.create_all()
+paths.create_all()
 ```
 
 Here's how you can do the above asynchronously:
@@ -70,24 +72,24 @@ from app_paths import AsyncAppPaths
 from aiopath import AsyncPath
 
 
-dirs = await AsyncAppPaths.get_paths('app', 'My Name', '0.1.0')
+paths = await AsyncAppPaths.get_paths('app', 'My Name', '0.1.0')
 
 # app_paths can returns AsyncPaths
-user_data: AsyncPath = dirs.user_data_path
+user_data: AsyncPath = paths.user_data_path
 assert isinstance(user_data, AsyncPath)
 
 # appdirs can return uncreated paths
 assert not await user_data.exists()
 
 # but it can also dynamically create paths on the fly
-user_data: AsyncPath = await dirs.user_data
+user_data: AsyncPath = await paths.user_data
 assert await user_data.exists()
 
-await dirs.create_user()
-await dirs.create_site()
+await paths.create_user()
+await paths.create_site()
 
 # to run the following you must have write access to all paths
-await dirs.create_all()
+await paths.create_all()
 ```
 
 # Installation
