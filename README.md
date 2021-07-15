@@ -100,6 +100,7 @@ await paths.create_all()
 
 # Installation
 ## Requirements
+ - Windows, macOS or POSIX compatible operating systems
  - Python 3.8+
 
 ## PyPI
