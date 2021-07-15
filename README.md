@@ -1,5 +1,5 @@
 # `app_paths`
-`app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/) and automatically creates canonical paths for storing app and user data.
+`app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/) and automatically creates canonical paths for storing app and user data on Windows, macOS, Linux and *BSD.
 
 Instead of just strings, `app_paths` gives users [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects and handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
@@ -105,7 +105,7 @@ await paths.create_all()
 
 ## PyPI
 ```bash
-python3 -m pip install app_paths
+$ python3 -m pip install app_paths
 ```
 
 # Support
