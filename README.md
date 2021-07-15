@@ -40,7 +40,7 @@ from app_paths import AppPaths
 
 paths = AppPaths.get_paths('app', 'My Name', '0.1.0')
 
-# app_paths can returns paths
+# app_paths can return paths
 user_data: Path = paths.user_data_path
 assert isinstance(user_data, Path)
 
@@ -77,7 +77,7 @@ from aiopath import AsyncPath
 
 paths = await AsyncAppPaths.get_paths('app', 'My Name', '0.1.0')
 
-# app_paths can returns AsyncPaths
+# app_paths can return AsyncPaths
 user_data: AsyncPath = paths.user_data_path
 assert isinstance(user_data, AsyncPath)
 
