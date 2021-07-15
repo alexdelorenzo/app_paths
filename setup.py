@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Final
-from setuptools import setup
 from pathlib import Path
+from setuptools import setup
 
 
 REQS: list[str] = Path('requirements.txt') \
