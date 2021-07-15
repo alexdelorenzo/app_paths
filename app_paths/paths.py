@@ -290,7 +290,7 @@ async def get_async_paths(
     appauthor,
     version,
     roaming,
-    multipath
+    multipath,
     is_async=True,
   )
 
