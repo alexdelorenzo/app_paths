@@ -48,7 +48,7 @@ assert isinstance(user_data, Path)
 `app_paths` can create paths on the file system dynamically, and it will cache results so excess I/O isn't performed.
 
 ```python3
-# appdirs can return uncreated paths
+# app_paths can return uncreated paths
 assert not user_data.exists()
 
 # but it can also dynamically create paths on the fly
@@ -59,6 +59,7 @@ assert user_data.exists()
 It can do batch creation of app paths, and it will use efficient concurrent I/O in both synchronous and async Python programs.
 
 ```python3
+# concurrently create app paths
 paths.create_user()
 paths.create_site()
 
@@ -78,13 +79,14 @@ paths = await AsyncAppPaths.get_paths('app', 'My Name', '0.1.0')
 user_data: AsyncPath = paths.user_data_path
 assert isinstance(user_data, AsyncPath)
 
-# appdirs can return uncreated paths
+# app_paths can return uncreated paths
 assert not await user_data.exists()
 
 # but it can also dynamically create paths on the fly
 user_data: AsyncPath = await paths.user_data
 assert await user_data.exists()
 
+# concurrently create app paths
 await paths.create_user()
 await paths.create_site()
 
