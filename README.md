@@ -3,6 +3,8 @@
 
 Instead of just strings, `app_paths` gives developers [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects, and it handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
+This project uses [`📁 aiopath`](https://github.com/alexdelorenzo/aiopath) for an async `pathlib` replacement.
+
 ## Use case
 First, let's take a look at [`appdirs`](https://pypi.org/project/appdirs/):
 ```python
