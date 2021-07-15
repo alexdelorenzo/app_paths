@@ -35,7 +35,7 @@ However, it's up to app developers to handle creating paths on users' file syste
 `app_paths` automatically gives you [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html) handles for your paths in synchronous apps, and [`aiopath.AsyncPath`](https://github.com/alexdelorenzo/aiopath) handles for async apps. 
 
 ```python3
-from app_paths import AppPaths, AsyncAppPaths
+from app_paths import AppPaths
 
 
 paths = AppPaths.get_paths('app', 'My Name', '0.1.0')
