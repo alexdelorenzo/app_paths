@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Union, Optional, Iterable, Callable, \
   Any
-from abc import ABC, abstractmethod
+from abc import ABC, abstractstaticmethod
 from functools import partial, wraps
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
@@ -28,7 +28,7 @@ class AppPathsBase(ABC, Unpackable):
   user_log_path: Paths
   user_state_path: Paths
 
-  @abstractmethod
+  @abstractstaticmethod
   def get_paths(
     appname: Optional[str] = None,
     appauthor: Optional[str] = None,
@@ -41,7 +41,7 @@ class AppPathsBase(ABC, Unpackable):
     pass
 
   @property
-  def as_dict(self) -> PathNames:
+  def all_paths(self) -> PathNames:
     name_paths = asdict(self)
 
     return {
@@ -53,7 +53,7 @@ class AppPathsBase(ABC, Unpackable):
   def site_paths(self) -> PathNames:
     return {
       name: path
-      for name, path in self.as_dict.items()
+      for name, path in self.all_paths.items()
       if name.startswith('site')
     }
 
@@ -61,7 +61,7 @@ class AppPathsBase(ABC, Unpackable):
   def user_paths(self) -> PathNames:
     return {
       name: path
-      for name, path in self.as_dict.items()
+      for name, path in self.all_paths.items()
       if name.startswith('user')
     }
 
