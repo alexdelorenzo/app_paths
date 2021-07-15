@@ -1,7 +1,7 @@
 # `app_paths`
-`app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/). 
+`app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/) and automatically creates canonical paths for storing app and user data.
 
-Instead of strings, `app_paths` gives users [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects and handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
+Instead of just strings, `app_paths` gives users [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects and handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
 ## Use case
 Let's take a look at [`appdirs`](https://pypi.org/project/appdirs/):
