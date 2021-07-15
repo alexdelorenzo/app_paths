@@ -11,7 +11,7 @@ REQS: list[str] = Path('requirements.txt') \
 REQS: Final = [
   line
   for line in REQS
-  if not line.startswith('#')
+  if line and not line.startswith('#')
 ]
 
 NAME: str = 'app_paths'
