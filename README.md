@@ -4,7 +4,7 @@
 Instead of just strings, `app_paths` gives users [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects and handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
 ## Use case
-Let's take a look at [`appdirs`](https://pypi.org/project/appdirs/):
+First, let's take a look at [`appdirs`](https://pypi.org/project/appdirs/):
 ```python
 from pathlib import Path
 from appdirs import AppDirs
@@ -19,7 +19,7 @@ assert isinstance(user_data, str)
 print(user_data)  # '/home/user/.cache/app/0.1.0'
 ```
 
-`appdirs` can generate paths as strings for app. It does one thing, and it does that one thing well on multiple platforms.
+`appdirs` can generate paths as strings for an app. It does one thing, and it does that one thing well on multiple platforms.
 
 ```python3
 user_data_path = Path(user_data)
