@@ -16,7 +16,7 @@ dirs = AppDirs('app', 'My Name', '0.1.0')
 user_data: str = dirs.user_data_dir
 assert isinstance(user_data, str)
 
-print(user_data)  # -> '~.cache/app/0.1.0'
+print(user_data)  # '/home/user/.cache/app/0.1.0'
 ```
 
 `appdirs` can generate paths as strings for app. It does one thing, and it does that one thing well on multiple platforms.
@@ -43,6 +43,8 @@ paths = AppPaths.get_paths('app', 'My Name', '0.1.0')
 # app_paths can returns paths
 user_data: Path = paths.user_data_path
 assert isinstance(user_data, Path)
+
+print(user_data)  # '/home/user/.cache/app/0.1.0'
 ```
 
 `app_paths` can create paths on the file system dynamically, and it will cache results so excess I/O isn't performed.
@@ -78,6 +80,8 @@ paths = await AsyncAppPaths.get_paths('app', 'My Name', '0.1.0')
 # app_paths can returns AsyncPaths
 user_data: AsyncPath = paths.user_data_path
 assert isinstance(user_data, AsyncPath)
+
+print(user_data)  # '/home/user/.cache/app/0.1.0'
 
 # app_paths can return uncreated paths
 assert not await user_data.exists()
