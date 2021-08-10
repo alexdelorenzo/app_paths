@@ -63,12 +63,15 @@ assert user_data.exists()
 It can do batch creation of app paths, and it will use efficient concurrent I/O in both synchronous and async Python programs.
 
 ```python3
-# concurrently create app paths
-paths.create_user()
-paths.create_site()
+# create user app paths concurrently
+await paths.create_user()
 
 # to run the following you must have write access to all paths
-paths.create_all()
+# create site app paths concurrently
+await paths.create_site()
+
+# create user and site paths concurrently
+await paths.create_all()
 ```
 
 Here's how you can do the above asynchronously:
@@ -92,11 +95,14 @@ assert not await user_data.exists()
 user_data: AsyncPath = await paths.user_data
 assert await user_data.exists()
 
-# concurrently create app paths
+# create user app paths concurrently
 await paths.create_user()
-await paths.create_site()
 
 # to run the following you must have write access to all paths
+# create site app paths concurrently
+await paths.create_site()
+
+# create user and site paths concurrently
 await paths.create_all()
 ```
 
