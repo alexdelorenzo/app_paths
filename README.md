@@ -1,7 +1,7 @@
 # Get and create paths for your app
 `app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/) and automatically creates canonical file system paths for storing app and user data on Windows, macOS, Linux and *BSD.
 
-Instead of just strings, `app_paths` gives developers [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects, and it handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
+Instead of just strings, `app_paths` gives developers `Path` objects from [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath), and it handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
 This project uses [`📁 aiopath`](https://github.com/alexdelorenzo/aiopath) as an async [`pathlib`](https://docs.python.org/3/library/pathlib.html) replacement.
 
