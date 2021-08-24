@@ -1,7 +1,7 @@
 # Get and create paths for your app
 `app_paths` builds upon [`appdirs`](https://pypi.org/project/appdirs/) and automatically creates canonical file system paths for storing app and user data on Windows, macOS, Linux and *BSD.
 
-Instead of just strings, `app_paths` gives developers [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath) objects, and it handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
+Instead of just strings, `app_paths` gives developers `Path` objects from [`pathlib`](https://docs.python.org/3/library/pathlib.html) or [`aiopath`](https://github.com/alexdelorenzo/aiopath), and it handles path creation efficiently. It also adds [async support](https://www.python.org/dev/peps/pep-0492/).
 
 This project uses [`📁 aiopath`](https://github.com/alexdelorenzo/aiopath) as an async [`pathlib`](https://docs.python.org/3/library/pathlib.html) replacement.
 
@@ -63,12 +63,15 @@ assert user_data.exists()
 It can do batch creation of app paths, and it will use efficient concurrent I/O in both synchronous and async Python programs.
 
 ```python3
-# concurrently create app paths
-paths.create_user()
-paths.create_site()
+# create user app paths concurrently
+await paths.create_user()
 
 # to run the following you must have write access to all paths
-paths.create_all()
+# create site app paths concurrently
+await paths.create_site()
+
+# create user and site paths concurrently
+await paths.create_all()
 ```
 
 Here's how you can do the above asynchronously:
@@ -92,11 +95,14 @@ assert not await user_data.exists()
 user_data: AsyncPath = await paths.user_data
 assert await user_data.exists()
 
-# concurrently create app paths
+# create user app paths concurrently
 await paths.create_user()
-await paths.create_site()
 
 # to run the following you must have write access to all paths
+# create site app paths concurrently
+await paths.create_site()
+
+# create user and site paths concurrently
 await paths.create_all()
 ```
 
