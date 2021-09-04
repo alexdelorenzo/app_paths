@@ -1,6 +1,6 @@
 aiopath>=0.5.11; python_version <= '3.9'
 aiopath>=0.6.9; python_version >= '3.10'
-unpackable>=0.0.3,<0.1.0
+unpackable>=0.0.4,<0.1.0
 
 appdirs
 asyncstdlib>=3.9.2, <4.0.0
