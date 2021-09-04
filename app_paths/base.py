@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Dict
 from enum import auto
 
 from strenum import StrEnum
@@ -21,7 +22,7 @@ class AppPath(StrEnum):
     return get_app_path(name)
 
 
-PathNames = dict[AppPath, Paths]
+PathNames = Dict[AppPath, Paths]
 
 
 def get_app_path(name: str) -> AppPath:
