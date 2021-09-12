@@ -14,7 +14,7 @@ from appdirs import AppDirs
 
 from .io import make_dir_async, create_path, run_coros, \
   Paths
-from .base import AppPath
+from .base import AppPath, PathNames
 
 
 @dataclass
